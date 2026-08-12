@@ -16,7 +16,7 @@ const authors = [
 function App() {
   return <main className="page">
     <section className="hero-section">
-      <h1 className="title">InvisIto: Weaving Unobtrusive Infrared Markers<br />for Ubiquitous Textile Interaction</h1>
+      <h1 className="title">InvisIto: Weaving Unobtrusive Infrared Markers <span>for Ubiquitous Textile Interaction</span></h1>
       <div className="authors">{authors.map((author, index) => <span key={author.name}>{author.url ? <a href={author.url}>{author.name}</a> : author.name}{author.equalContribution && <sup>*</sup>}<sup>{author.affiliations}</sup>{index < authors.length - 1 ? ", " : ""}</span>)}</div>
       <p className="equal-contribution"><sup>*</sup>Both authors contributed equally to this research.</p>
       <div className="institutions"><span><sup>1</sup>The University of Texas at Dallas, Richardson, TX, USA</span><span><sup>2</sup>Keio University, Kanagawa, Japan</span><span><sup>3</sup>The University of Tokyo, Tokyo, Japan</span><span><sup>4</sup>Adobe Research, Basel, Switzerland</span></div>
