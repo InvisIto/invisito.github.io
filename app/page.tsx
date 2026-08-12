@@ -1,6 +1,13 @@
 const authors = [
-  "Hsuanling Lee", "Hal Sugiyama", "Tian Min", "Hanako Fujino", "Mayuka Kuwana",
-  "Yuta Sugiura", "Mustafa Doga Dogan", "Liang He", "Koya Narumi",
+  { name: "Hsuanling Lee", affiliations: "1,2", equalContribution: true, url: "https://hsuanlinglee.net/" },
+  { name: "Hal Sugiyama", affiliations: "2", equalContribution: true },
+  { name: "Tian Min", affiliations: "2", url: "https://welkin.dev/" },
+  { name: "Hanako Fujino", affiliations: "2" },
+  { name: "Mayuka Kuwana", affiliations: "3", url: "https://nashiro66.github.io/" },
+  { name: "Yuta Sugiura", affiliations: "2", url: "https://lclab.org/people/yutasugiura" },
+  { name: "Mustafa Doga Dogan", affiliations: "4", url: "https://www.dogadogan.com/" },
+  { name: "Liang He", affiliations: "1", url: "https://www.lianghe.me/" },
+  { name: "Koya Narumi", affiliations: "2", url: "https://pplab.jp/" },
 ];
 
 export default function Home() {
@@ -9,14 +16,18 @@ export default function Home() {
       <section className="hero-section">
         <h1 className="title">InvisIto: Weaving Unobtrusive Infrared Markers<br />for Ubiquitous Textile Interaction</h1>
         <div className="authors">
-          {authors.map((author, index) => <span key={author}>{author}{index < authors.length - 1 ? " · " : ""}</span>)}
+          {authors.map((author, index) => <span key={author.name}>{author.url ? <a href={author.url}>{author.name}</a> : author.name}{author.equalContribution && <sup>*</sup>}<sup>{author.affiliations}</sup>{index < authors.length - 1 ? ", " : ""}</span>)}
         </div>
+        <p className="equal-contribution"><sup>*</sup>Both authors contributed equally to this research.</p>
         <div className="institutions">
-          University of Texas at Dallas &nbsp;&nbsp; Keio University &nbsp;&nbsp; The University of Tokyo &nbsp;&nbsp; Adobe Research
+          <span><sup>1</sup>The University of Texas at Dallas, Richardson, TX, USA</span>
+          <span><sup>2</sup>Keio University, Kanagawa, Japan</span>
+          <span><sup>3</sup>The University of Tokyo, Tokyo, Japan</span>
+          <span><sup>4</sup>Adobe Research, Basel, Switzerland</span>
         </div>
-        <p className="venue">UIST 2026</p>
+        <p className="venue"><a href="https://uist.acm.org/2026/">The 39th Annual ACM Symposium on User Interface Software and Technology (UIST ’26), November 2–5, 2026, Detroit, MI, USA</a></p>
         <div className="buttons">
-          <a className="button" href="https://doi.org/10.1145/3830398.3830562"> <span>📄</span> Paper</a>
+          <a className="button" href="/invisito-paper.pdf"><span className="paper-icon" aria-hidden="true" />Paper</a>
           <a className="button" href="#video"><span>▶</span> Video</a>
           <a className="button" href="#bibtex"><span>&lt;/&gt;</span> BibTeX</a>
         </div>
@@ -45,7 +56,7 @@ export default function Home() {
 }`}</pre>
       </section>
 
-      <footer>This website is built on top of the original <a href="https://nerfies.github.io/">Nerfies</a> project-page template.</footer>
+      <footer>This website is built on top of the original <a href="https://nerfies.github.io/">Nerfies</a> website template.</footer>
     </main>
   );
 }
