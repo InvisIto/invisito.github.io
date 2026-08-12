@@ -1,115 +1,51 @@
 const authors = [
-  { name: "First Author", affiliation: "1" },
-  { name: "Second Author", affiliation: "1" },
-  { name: "Third Author", affiliation: "2" },
-  { name: "Fourth Author", affiliation: "1" },
-];
-
-const resources = [
-  { label: "Paper", icon: "↗", href: "#paper" },
-  { label: "Video", icon: "▶", href: "#video" },
-  { label: "Code", icon: "⌘", href: "#code" },
-  { label: "BibTeX", icon: "{}", href: "#bibtex" },
+  "Hsuanling Lee", "Hal Sugiyama", "Tian Min", "Hanako Fujino", "Mayuka Kuwana",
+  "Yuta Sugiura", "Mustafa Doga Dogan", "Liang He", "Koya Narumi",
 ];
 
 export default function Home() {
   return (
-    <main>
-      <nav className="topbar" aria-label="Primary navigation">
-        <a className="wordmark" href="#top" aria-label="Invisito home">invisito</a>
-        <a className="nav-paper" href="#paper">Research project · 2026</a>
-      </nav>
+    <main className="page">
+      <section className="hero-section">
+        <h1 className="title">InvisIto: Weaving Unobtrusive Infrared Markers<br />for Ubiquitous Textile Interaction</h1>
+        <div className="authors">
+          {authors.map((author, index) => <span key={author}>{author}{index < authors.length - 1 ? " · " : ""}</span>)}
+        </div>
+        <div className="institutions">
+          University of Texas at Dallas &nbsp;&nbsp; Keio University &nbsp;&nbsp; The University of Tokyo &nbsp;&nbsp; Adobe Research
+        </div>
+        <p className="venue">UIST 2026</p>
+        <div className="buttons">
+          <a className="button" href="https://doi.org/10.1145/3830398.3830562"> <span>📄</span> Paper</a>
+          <a className="button" href="#video"><span>▶</span> Video</a>
+          <a className="button" href="#bibtex"><span>&lt;/&gt;</span> BibTeX</a>
+        </div>
+      </section>
 
-      <section className="hero" id="top">
-        <p className="eyebrow">ACM CHI · 2026</p>
-        <h1>Invisito</h1>
-        <p className="hero-subtitle">Making digital interactions disappear into the physical world.</p>
-        <p className="hero-description">
-          A research exploration of subtle, embodied interfaces that preserve the
-          focus, materiality, and human presence of everyday experiences.
+      <section className="section abstract-section">
+        <h2 className="section-title">Abstract</h2>
+        <p>
+          Textiles are increasingly explored as media for interacting with digital information. However, many of the existing approaches rely on visible tags, printed overlays, or electronic modules that compromise the fabric’s aesthetic and tactile qualities. To address this, we present <i>InvisIto</i>, a method for weaving visually unobtrusive yet machine-readable infrared markers directly into fabrics using near-infrared (NIR)-absorbing yarns. Although these yarns look similar to standard fibers in ambient light, they produce strong contrast in NIR imaging. Our method includes: (1) a design tool that helps users easily embed infrared markers into weaving drafts, (2) five disguising strategies that further reduce marker visibility under ambient light, and (3) a camera-based detection pipeline for decoding and tracking the woven markers. InvisIto supports both woven QR codes for data encoding and woven ArUco markers for binary input and deformation tracking. We demonstrate applications across hand weaving, Jacquard weaving, and industrial fabrication, showing that InvisIto supports interaction and fabrication across scales, from bespoke artifacts to mass production.
         </p>
-
-        <div className="author-list">
-          {authors.map((author, index) => (
-            <span key={author.name}>
-              <a href="#authors">{author.name}</a><sup>{author.affiliation}</sup>
-              {index < authors.length - 1 && <i> · </i>}
-            </span>
-          ))}
-        </div>
-        <p className="affiliations" id="authors"><sup>1</sup>Your Lab &nbsp; <sup>2</sup>Your Institution</p>
-
-        <div className="resource-links" aria-label="Project resources">
-          {resources.map((resource) => (
-            <a key={resource.label} href={resource.href}>
-              <span>{resource.icon}</span>{resource.label}
-            </a>
-          ))}
-        </div>
-
-        <div className="field" aria-hidden="true">
-          <div className="field-grid" />
-          <div className="field-ring ring-one" />
-          <div className="field-ring ring-two" />
-          <div className="field-marker marker-one" />
-          <div className="field-marker marker-two" />
-          <p>present / unseen</p>
-        </div>
       </section>
 
-      <section className="abstract section" id="paper">
-        <p className="section-index">01 / ABSTRACT</p>
-        <div className="section-copy">
-          <h2>Technology should feel less like a destination, and more like a material.</h2>
-          <p>
-            Digital systems often ask for attention before they offer assistance. Invisito
-            investigates how interaction can become quieter: sensed through ordinary
-            objects, expressed through peripheral cues, and shaped around people rather
-            than screens. We introduce a design framework and a set of working prototypes
-            for building interfaces that are useful without being visually demanding.
-          </p>
-        </div>
+      <section className="section" id="video">
+        <h2 className="section-title">Video</h2>
+        <div className="video-placeholder">Project video coming soon.</div>
       </section>
 
-      <section className="statement">
-        <p>THE INTERFACE IS NOT GONE.</p>
-        <p>IT HAS SIMPLY LEARNED WHEN TO STEP BACK.</p>
-      </section>
-
-      <section className="video-section section" id="video">
-        <p className="section-index">02 / FILM</p>
-        <div className="film-frame" role="img" aria-label="Invisito project film placeholder">
-          <div className="play-button">▶</div>
-          <span>INVISITO / PROJECT FILM</span>
-          <small>Replace this frame with your YouTube or Vimeo embed</small>
-        </div>
-      </section>
-
-      <section className="contributions section" id="code">
-        <p className="section-index">03 / CONTRIBUTIONS</p>
-        <div className="contribution-grid">
-          <article><b>01</b><h3>A design language</h3><p>Principles for making computational behavior legible without turning it into visual noise.</p></article>
-          <article><b>02</b><h3>Embodied prototypes</h3><p>Concrete studies of sensing, feedback, and interaction across familiar physical materials.</p></article>
-          <article><b>03</b><h3>Human-centered evidence</h3><p>Findings on attention, trust, and how people recognize technology at the edge of awareness.</p></article>
-        </div>
-      </section>
-
-      <section className="bibtex section" id="bibtex">
-        <p className="section-index">04 / CITE</p>
-        <pre>{`@inproceedings{invisito2026,
-  title     = {Invisito: Making Digital Interactions
-               Disappear into the Physical World},
-  author    = {First Author and Second Author and
-               Third Author and Fourth Author},
-  booktitle = {Proceedings of the ACM CHI Conference},
-  year      = {2026}
+      <section className="section" id="bibtex">
+        <h2 className="section-title">BibTeX</h2>
+        <pre>{`@inproceedings{lee2026invisito,
+  title={InvisIto: Weaving Unobtrusive Infrared Markers for Ubiquitous Textile Interaction},
+  author={Lee, Hsuanling and Sugiyama, Hal and Min, Tian and Fujino, Hanako and Kuwana, Mayuka and Sugiura, Yuta and Dogan, Mustafa Doga and He, Liang and Narumi, Koya},
+  booktitle={The 39th Annual ACM Symposium on User Interface Software and Technology},
+  year={2026},
+  doi={10.1145/3830398.3830562}
 }`}</pre>
       </section>
 
-      <footer>
-        <span>INVISITO © 2026</span>
-        <span>Built from the <a href="https://nerfies.github.io/">Nerfies project-page template</a></span>
-      </footer>
+      <footer>This website is built on top of the original <a href="https://nerfies.github.io/">Nerfies</a> project-page template.</footer>
     </main>
   );
 }
